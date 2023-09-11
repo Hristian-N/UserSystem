@@ -136,6 +136,7 @@ namespace UserSystem
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine(message);
             // Ready
+            // New comment
         }
     }
 }
