@@ -51,9 +51,17 @@ namespace UserSystem
 
         static bool Register(string username, string password, string[,] userTable)
         {
-
             // check if username exists
-            bool usernameExists = Convert.ToBoolean(Iteration(userTable, "check if exist", username, password));
+            int num;
+            bool usernameExists = true;
+
+            num = Iteration(userTable, "check if exist", username, password);
+
+            if (num == -1)
+            {
+                usernameExists = false;
+            }
+
             bool error = ErrorCheck(usernameExists, "Username already exists.");
 
             if (error)
@@ -97,7 +105,7 @@ namespace UserSystem
         }
         static int Iteration(string[,] userTable, string operation, string username = "1", string password = "1")
         {
-            int index = 0;
+            int index = -1;
 
             for (int i = 0; i < userTable.GetLength(0); i++)
             {
